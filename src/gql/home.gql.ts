@@ -6,11 +6,3 @@ export const GET_USERS = gql`
         name
     }
 `
-
-export const POST_USER = gql`
-    query postUser {
-        email
-        password
-        name
-    }
-`
