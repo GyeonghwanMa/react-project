@@ -6,12 +6,12 @@ export const POST_USER = gql`
         $password: String!
         $name: String!
     ) {
-    postUser(
-        email: $email
-        password: $password
-        name: $name
-    ) {
-        email
-    }
+        postUser(
+            email: $email
+            password: $password
+            name: $name
+        ) {
+            email
+        }
   }
 `;
