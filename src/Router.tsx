@@ -2,10 +2,10 @@ import React from "react";
 import { BrowserRouter , Route, Routes } from "react-router-dom";
 import Navigation from "./components/Navigation";
 import Home from "./pages/Home";
+import Modify from "./pages/Modify";
 import SignUp from "./pages/SignUp";
-// import Detail from "pages/Detail";
 
-function Router(props: any) {
+function Router() {
   return (
     <BrowserRouter >
       <Navigation />
@@ -13,7 +13,7 @@ function Router(props: any) {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/signup" element={<SignUp />} />
-        {/* <Route path="/movie/:id" component={Detail} /> */}
+        <Route path="/modify" element={<Modify />} />
       </Routes>
     </BrowserRouter >
   );

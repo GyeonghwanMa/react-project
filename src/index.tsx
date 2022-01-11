@@ -4,11 +4,14 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { client } from './apollo/client';
 import { ApolloProvider } from '@apollo/react-hooks';
+import { CookiesProvider } from 'react-cookie';
 
 ReactDOM.render(
   <ApolloProvider client={client}>
     <React.StrictMode>
-      <App />
+        <CookiesProvider>
+          <App />
+        </CookiesProvider>
     </React.StrictMode>
   </ApolloProvider>,
   document.getElementById('root')
