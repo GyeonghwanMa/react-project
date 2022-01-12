@@ -24,6 +24,9 @@ function SignUp() {
           name,
         },
       });
+      if (postUser) {
+        alert("회원가입 성공!");
+      }
     } catch (error: any) {
       console.error(`onSignUp Error = ${error}`);
     }
