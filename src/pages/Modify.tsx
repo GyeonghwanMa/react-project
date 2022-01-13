@@ -4,9 +4,11 @@ import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import { useMutation, useQuery } from '@apollo/react-hooks';
 import { useCookies } from "react-cookie";
+import { useNavigate } from "react-router-dom";
 import { GET_USER_BY_EMAIL, PATCH_USER, DELETE_USER } from "../gql/modify.gql";
 
 function Modify() {
+    const navigate = useNavigate();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [name, setName] = useState('');
@@ -20,6 +22,12 @@ function Modify() {
         fetchPolicy: 'cache-and-network',
         variables: { email: cookies.test },
     });
+
+    useEffect(() => {
+        if (!cookies.test) {
+            navigate("/");
+        }
+    }, [])
       
     useEffect(() => {
         if (data?.getUserByEmail) {
@@ -50,20 +58,25 @@ function Modify() {
     }
 
     const onDrop = async () => {
-        try {
-            const {
-                data: { deleteUser },
-            } = await deleteUserMutation({
-                variables: {
-                    email,
-                    password,
-                },
-            });
-            if (deleteUser) {
-                alert("회원탈퇴 성공!");
+        const confirmText = "탈퇴하시겠습니까?";
+        if (window.confirm(confirmText)) {
+            try {
+                const {
+                    data: { deleteUser },
+                } = await deleteUserMutation({
+                    variables: {
+                        email,
+                        password,
+                    },
+                });
+                if (deleteUser) {
+                    alert("회원탈퇴 성공!");
+                    removeCookie('test');
+                    navigate("/");
+                }
+            } catch (error: any) {
+                console.error(`onDrop Error = ${error}`);
             }
-        } catch (error: any) {
-            console.error(`onDrop Error = ${error}`);
         }
     }
 

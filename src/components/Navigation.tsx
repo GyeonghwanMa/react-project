@@ -12,7 +12,7 @@ function Navigation() {
         <Button>
           <Link to="/" style={{ textDecoration: 'none', color: '#1976d2' }}>Home</Link>
         </Button>
-        <Button>
+        <Button style={cookies.test === undefined ? {display: 'none'} : {display: ''}}>
           <Link to="/modify" style={{ textDecoration: 'none', color: '#1976d2' }}>Modify</Link>
         </Button>
       </Box>

@@ -4,8 +4,12 @@ import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import { POST_USER } from "../gql/signup.gql";
 import { useMutation } from "@apollo/client";
+import { useNavigate } from "react-router-dom";
+
 
 function SignUp() {
+  const navigate = useNavigate();
+
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [name, setName] = useState('');
@@ -26,6 +30,7 @@ function SignUp() {
       });
       if (postUser) {
         alert("회원가입 성공!");
+        navigate("/");
       }
     } catch (error: any) {
       console.error(`onSignUp Error = ${error}`);
