@@ -13,12 +13,13 @@ function Modify() {
     const [password, setPassword] = useState('');
     const [name, setName] = useState('');
     
-    const [cookies, setCookies, removeCookie] = useCookies(['test']);
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const [cookies, _, removeCookie] = useCookies(['test']);
     
     const [patchUserMutation] = useMutation(PATCH_USER);
     const [deleteUserMutation] = useMutation(DELETE_USER);
 
-    const {loading, error, data, refetch} = useQuery(GET_USER_BY_EMAIL, {
+    const {data} = useQuery(GET_USER_BY_EMAIL, {
         fetchPolicy: 'cache-and-network',
         variables: { email: cookies.test },
     });
@@ -27,7 +28,8 @@ function Modify() {
         if (!cookies.test) {
             navigate("/");
         }
-    }, [])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
       
     useEffect(() => {
         if (data?.getUserByEmail) {

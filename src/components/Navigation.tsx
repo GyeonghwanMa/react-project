@@ -5,7 +5,7 @@ import Button from '@mui/material/Button';
 import { useCookies } from "react-cookie";
 
 function Navigation() {
-  const [cookies, setCookies, removeCookie] = useCookies(['test']);
+  const [cookies] = useCookies(['test']);
   return (
     <div className="nav">
       <Box sx={{ display: 'flex', alignItems: 'center', textAlign: 'center' }}>
@@ -14,6 +14,9 @@ function Navigation() {
         </Button>
         <Button style={cookies.test === undefined ? {display: 'none'} : {display: ''}}>
           <Link to="/modify" style={{ textDecoration: 'none', color: '#1976d2' }}>Modify</Link>
+        </Button>
+        <Button>
+          <Link to="/study" style={{ textDecoration: 'none', color: '#1976d2' }}>Study</Link>
         </Button>
       </Box>
     </div>
