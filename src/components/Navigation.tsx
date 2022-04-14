@@ -18,6 +18,9 @@ function Navigation() {
         <Button>
           <Link to="/study" style={{ textDecoration: 'none', color: '#1976d2' }}>Study</Link>
         </Button>
+        <Button>
+          <Link to="/InfinityScroll" style={{ textDecoration: 'none', color: '#1976d2' }}>InfinityScroll</Link>
+        </Button>
       </Box>
     </div>
   );
