@@ -9,3 +9,13 @@ export const GET_USERS_INIT = gql`
         }
     }
 `
+
+export const GET_USERS = gql`
+    query getUsers($lastId: String!) {
+        getUsers(lastId: $lastId) {
+            _id
+            email
+            name
+        }
+    }
+`
