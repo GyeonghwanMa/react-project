@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useState } from "react";
-import { GET_USERS_INIT, GET_USERS } from "../gql/InfinityScroll.gql";
+import { GET_USERS_INIT, GET_USERS } from "../gql/infinityScroll.gql";
 import { useLazyQuery } from "@apollo/client";
 import UserList from "../components/UserList";
 
